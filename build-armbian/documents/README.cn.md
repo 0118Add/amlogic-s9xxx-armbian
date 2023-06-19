@@ -392,6 +392,8 @@ armbian-update
 
 举例: `armbian-update -k 5.15.50 -u dev`
 
+通过 `-k` 参数指定内核版本号时，可以准确指定具体版本号，例如：`armbian-update -k 5.15.50`，也可以模糊指定到内核系列，例如：`armbian-update -k 5.15`，当模糊指定时将自动使用指定系列的最新版本。
+
 更新内核时会自动备份当前系统使用的内核，存储路径在 `/ddbr/backup` 目录里，保留最近使用过的 3 个版本的内核，如果新安装的内核不稳定，可以随时恢复回备份的内核：
 ```shell
 # 进入备份的内核目录，如 5.10.125
@@ -787,6 +789,15 @@ sudo nmcli dev wifi
 
 # 连接无线
 sudo nmcli dev wifi connect "wifi名称" password "wifi密码"
+
+# 显示已保存的网络连接列表
+sudo nmcli connection show
+
+# 断开连接
+sudo nmcli connection down "wifi名称"
+
+# 忘记连接并取消自动连接
+sudo nmcli connection delete "wifi名称"
 ```
 
 <div style="width:100%;margin-top:40px;margin:5px;">

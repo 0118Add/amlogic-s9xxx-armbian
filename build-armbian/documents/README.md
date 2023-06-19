@@ -391,6 +391,8 @@ armbian-update
 
 Example: `armbian-update -k 5.15.50 -u dev`
 
+When specifying the kernel version using the `-k` parameter, you can provide an exact version number, for example: `armbian-update -k 5.15.50`. Alternatively, you can provide a fuzzy specification to indicate the kernel series, for example: `armbian-update -k 5.15`. When using a fuzzy specification, the tool will automatically select the latest version available in the specified series.
+
 When updating the kernel, the currently used kernel will be automatically backed up, and the storage path is in the `/ddbr/backup` directory. The three most recently used versions of the kernel will be kept. If the newly installed kernel is unstable, you can always restore the backup kernel:
 
 ```shell
@@ -784,7 +786,16 @@ sudo nmcli r wifi on
 sudo nmcli dev wifi
 
 # Connect to a wireless network
-sudo nmcli dev wifi connect "WiFi Name" password "WiFi Password"
+sudo nmcli dev wifi connect "wifi_name" password "WiFi_Password"
+
+# Show the list of saved network connections
+sudo nmcli connection show
+
+# Disconnect from a connection
+sudo nmcli connection down "wifi_name"
+
+# Forget the connection and disable automatic connection
+sudo nmcli connection delete "wifi_name"
 ```
 
 <div style="width:100%;margin-top:40px;margin:5px;">
