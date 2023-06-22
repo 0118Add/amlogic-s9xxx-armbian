@@ -57,6 +57,7 @@ on:
         type: choice
         options:
           - -ophub
+          - -flippy
           - -yourname
 
 env:
